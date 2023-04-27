@@ -69,11 +69,11 @@ router.get('/movies',function(req,res){
 router.get('/movies/:indexNumber',function(req,res){
     const indexNumber =req.params.indexNumber
     const movie1 = movie[indexNumber]
-    if(movie.length-1 < indexNumber || indexNumber < 0){
-        res.send("Error..Invalid Input")    }
-    else{
-        res.send("valid")
-    }
+    // if(movie.length-1 < indexNumber || indexNumber < 0){
+    //     res.send("Error..Invalid Input")    }
+    // else{
+    //     res.send("valid")
+    // }
     res.send(movie1)
 })
 // router.get('/movies/:indexNumber',function(req,res){
