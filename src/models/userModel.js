@@ -3,15 +3,25 @@
 // book and another api to get the list of all books. 
 
 const mongoose = require('mongoose')
-const userSchema = new mongoose.Schema({
-    bookName : String,
+const userModel = new mongoose.Schema({
+    bookName : { 
+        type:String
+         },
+    price : {
+        indianPrice: String
+    },
+    year: {
+        type : Number,
+        default : 2021
+    },
     authorName : String,
-    category: String, 
-    year : Number,
+    tag: [String], 
+    totalPages : Number,
+    stockAvailable :Boolean
 },
         { timeStamps: true
 })
-module.exports = mongoose.model('User',userSchema)
+module.exports = mongoose.model('User',userModel)
 
 
 
