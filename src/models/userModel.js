@@ -1,27 +1,24 @@
-// Create a bookSchema with bookName, authorName, category and year .
-//  Create same 2 api's for books i.e. : 1 api to create a nw 
-// book and another api to get the list of all books. 
-
 const mongoose = require('mongoose')
+const author = require('./author.js')
+const myData = author;
 const userModel = new mongoose.Schema({
     bookName : { 
         type:String
          },
-    price : {
-        indianPrice: String
-    },
-    year: {
+    authorId : {
         type : Number,
-        default : 2021
+        required : true
     },
-    authorName : String,
-    tag: [String], 
-    totalPages : Number,
-    stockAvailable :Boolean
+    price : {
+        type : Number
+    },
+    ratings : Number,
+    // sales: {type: Number, default: 10},
+    // isDeleted : Boolean,
 },
         { timeStamps: true
 })
-module.exports = mongoose.model('User',userModel)
+module.exports = mongoose.model('Book',userModel)
 
 
 
