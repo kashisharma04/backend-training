@@ -1,25 +1,28 @@
-const mongoose= require("mongoose");
+const mongoose= require("mongoose");  
 const Object_Id = mongoose.Schema.Types.ObjectId;
 const userData = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
-    mobile: {
-        type: String,
-        required: true
+    bookname : String,
+    authorname: String,
+    authorId : Number,
+    date:{
+        type: Date,
+        default: Date.now
     },
-    emailId: String,
-    password: String,
-    gender: {
-        type: String,
-        enum: ["male", "female", "other"]
+    isPublished: {
+        type: Boolean,
+        default : "true"
     },
-    isDeleted: {
-        type : Boolean,
-        default: false     //default value is false
-    },  
-    age: Number,
+    price: Number,
+    summary: mongoose.Schema.Types.Mixed,
+    isDeleted : Boolean,  // become true on profile deletion
 },
         { timeStamps: true
 })
+let myData = {
+    name1 : "kashi",
+    marks: 22
+}
 
-module.exports = mongoose.model('User',userData);
+module.exports = mongoose.model('Book1',userData);
+module.exports.myData = myData;
+

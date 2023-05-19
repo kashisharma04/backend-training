@@ -33,6 +33,28 @@ const checkData= async function (req, res,next) {
   // return res.send({ user });
   next()
 };
+const middleware2= async  function(req,res,next){
+  let token = req.headers["x-auth-token"];
+  let decodedToken=jwt.verify(token, "technetium-batch")
+  let userToBeModified = req.params.userId
+    let userLoggedIn =decodedToken.userId
+    if(userToBeModified != userLoggedIn) return res.send({status: false, msg: 'User logged is not allowed to modify the requested users data'})
 
+    next()
+
+}
+const mid1 =  function (req,res,next){
+  console.log("welcome to middleware")
+  // logic
+  let loggedIn = false
+  if (loggedIn == true){
+      next ()
+  }
+  else{
+      res.send("Please Login or register")
+  }
+}
+module.exports.mid=mid1;
 module.exports.checkData=checkData;
 module.exports.checkAuthToken = checkAuthToken;
+module.exports.middleware2=middleware2;
